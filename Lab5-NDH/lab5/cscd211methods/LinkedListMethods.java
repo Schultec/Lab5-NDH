@@ -65,6 +65,9 @@ public class LinkedListMethods
     */
    public static int readIndex(final Scanner kb)
    {
+      if (kb == null) {
+         throw new IllegalArgumentException("kb cannot be null");
+      }
       return 0;
    }// end readIndex
    
@@ -80,7 +83,13 @@ public class LinkedListMethods
     */
    public static void fillArray(final Scanner kb, final Integer [] array)
    {
-      
+      if (kb == null){
+         throw new IllegalArgumentException("kb cannot be null");
+      }
+      if (total < 1){
+         throw new IllegalArgumentException("total cannot be less than one");
+      }
+
    }// end fillArray
    
    

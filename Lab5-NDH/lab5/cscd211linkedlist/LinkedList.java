@@ -50,7 +50,7 @@ public class LinkedList<T extends Comparable <? super T>>
 	   this.head = null;
 	   this.size = 0;
        if (array == null){
-           throw new IllegalArgumentException("array cannot be null")
+           throw new IllegalArgumentException("array cannot be null");
        }
        for(this.size = 0;this.size< array.length;this.size++)
            add(this.size ,array[this.size]);
@@ -126,7 +126,9 @@ public class LinkedList<T extends Comparable <? super T>>
     */
    public T get(final int index)
    {
-
+       if (index < 0 || index >= size){
+           throw new IndexOutOfBoundsException("index cannot be greater than size or less than 0");
+       }
       return null;
    }// end get
    
@@ -166,6 +168,9 @@ public class LinkedList<T extends Comparable <? super T>>
     */
    public boolean removeAllOccurrences(final T data)
    {
+       if (data == null){
+           throw new IllegalArgumentException("data cannot be null");
+       }
       return false;
    }// end removeAllOccurrences
    
@@ -194,6 +199,9 @@ public class LinkedList<T extends Comparable <? super T>>
 	 */
 	public T remove(int index)
 	{
+        if (index < 0 || index >= this.size){
+
+        }
       return null;
 	}// end remove
  

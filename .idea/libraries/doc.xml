@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="doc">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/Lab5-NDH/doc/type-search-index.zip!/" />
       <root url="jar://$PROJECT_DIR$/Lab5-NDH/doc/member-search-index.zip!/" />
+      <root url="jar://$PROJECT_DIR$/Lab5-NDH/doc/type-search-index.zip!/" />
       <root url="jar://$PROJECT_DIR$/Lab5-NDH/doc/package-search-index.zip!/" />
     </CLASSES>
     <JAVADOC />

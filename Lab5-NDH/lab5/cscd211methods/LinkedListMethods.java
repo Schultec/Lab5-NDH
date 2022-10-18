@@ -32,7 +32,25 @@ public class LinkedListMethods
     */
    public static int menu(final Scanner kb)
    {
-      return 12;
+      if (kb == null){
+         throw new IllegalArgumentException("scanner cannot be null");
+      }
+      System.out.println("menu");
+      System.out.println("1) Print the List");
+      System.out.println("2) Append the specified element to the end of this list.");
+      System.out.println("3) addAll(index, array)");
+      System.out.println("4) Read an index and get the data at that index");
+      System.out.println("5) getLast");
+      System.out.println("6) remove");
+      System.out.println("7) removeIndex");
+      System.out.println("8) removeLast");
+      System.out.println("9) toArray");
+      System.out.println("10) removeAllOccurrences");
+      System.out.println("11) clear the list");
+      System.out.println("12) Quit");
+      System.out.println("please make a selection:");
+      int choice = kb.nextInt();
+      return choice;
    }// end menu
    
       
@@ -47,6 +65,9 @@ public class LinkedListMethods
     */
    public static int readIndex(final Scanner kb)
    {
+      if (kb == null) {
+         throw new IllegalArgumentException("kb cannot be null");
+      }
       return 0;
    }// end readIndex
    
@@ -62,7 +83,11 @@ public class LinkedListMethods
     */
    public static void fillArray(final Scanner kb, final Integer [] array)
    {
-      
+      if (kb == null){
+         throw new IllegalArgumentException("kb cannot be null");
+      }
+      for
+
    }// end fillArray
    
    
@@ -77,7 +102,11 @@ public class LinkedListMethods
     */
    public static Integer createInteger(final Scanner kb)
    {
-      return null;   
+      if (kb == null){
+         throw new IllegalArgumentException("scanner cannot be null");
+      }
+      int integer = kb.nextInt();
+      return integer;
    }// end createInteger
    
    

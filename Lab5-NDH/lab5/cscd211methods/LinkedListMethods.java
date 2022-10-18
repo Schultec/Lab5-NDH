@@ -86,9 +86,7 @@ public class LinkedListMethods
       if (kb == null){
          throw new IllegalArgumentException("kb cannot be null");
       }
-      if (total < 1){
-         throw new IllegalArgumentException("total cannot be less than one");
-      }
+      for
 
    }// end fillArray
    
@@ -104,7 +102,11 @@ public class LinkedListMethods
     */
    public static Integer createInteger(final Scanner kb)
    {
-      return null;   
+      if (kb == null){
+         throw new IllegalArgumentException("scanner cannot be null");
+      }
+      int integer = kb.nextInt();
+      return integer;
    }// end createInteger
    
    

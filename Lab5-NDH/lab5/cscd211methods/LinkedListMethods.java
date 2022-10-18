@@ -30,8 +30,7 @@ public class LinkedListMethods
     * @throws IllegalArgumentException if kb is null
     * @NOTE The input buffer will be left empty
     */
-   public static int menu(final Scanner kb)
-   {
+   public static int menu(final Scanner kb) {
       if (kb == null){
          throw new IllegalArgumentException("scanner cannot be null");
       }
@@ -49,7 +48,7 @@ public class LinkedListMethods
       System.out.println("11) clear the list");
       System.out.println("12) Quit");
       System.out.println("please make a selection:");
-      int choice = kb.nextInt();
+      int choice = Integer.parseInt(kb.nextLine());
       return choice;
    }// end menu
    
@@ -63,12 +62,15 @@ public class LinkedListMethods
     * @throws IllegalArgumentException if kb is null
     * @NOTE The input buffer will be left empty
     */
-   public static int readIndex(final Scanner kb)
-   {
+   public static int readIndex(final Scanner kb) {
       if (kb == null) {
          throw new IllegalArgumentException("kb cannot be null");
       }
-      return 0;
+      int index = Integer.parseInt(kb.nextLine());
+      if (index <= -1){
+         throw new IllegalArgumentException("index must be greater than -1");
+      }
+      return index;
    }// end readIndex
    
    /** 
@@ -81,8 +83,7 @@ public class LinkedListMethods
     * @throws IllegalArgumentException if total less than 1 or kb is null
     * @NOTE The input buffer will be left empty
     */
-   public static void fillArray(final Scanner kb, final Integer [] array)
-   {
+   public static void fillArray(final Scanner kb, final Integer [] array) {
       if (kb == null){
          throw new IllegalArgumentException("kb cannot be null");
       }
@@ -100,8 +101,7 @@ public class LinkedListMethods
     * @throws IllegalArgumentException if kb is null
     * @NOTE The input buffer will be left empty
     */
-   public static Integer createInteger(final Scanner kb)
-   {
+   public static Integer createInteger(final Scanner kb) {
       if (kb == null){
          throw new IllegalArgumentException("scanner cannot be null");
       }

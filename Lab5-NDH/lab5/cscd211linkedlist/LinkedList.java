@@ -49,6 +49,11 @@ public class LinkedList<T extends Comparable <? super T>>
    {
 	   this.head = null;
 	   this.size = 0;
+       if (array == null){
+           throw new IllegalArgumentException("array cannot be null")
+       }
+       for(this.size = 0;this.size< array.length;this.size++)
+           add(this.size ,array[this.size]);
             
    }// end EVC
    
@@ -60,9 +65,10 @@ public class LinkedList<T extends Comparable <? super T>>
     *
     * @throws IllegalArgumentException if item is null
     */
-   public void addFirst(final T item)
-   {
-
+   public void addFirst(final T item) {
+        if (item == null){
+            throw new IllegalArgumentException("item cannot be null");
+        }
    }// end addFirst
    
  
@@ -73,9 +79,10 @@ public class LinkedList<T extends Comparable <? super T>>
     *
     * @throws IllegalArgumentException if item is null
     */
-   public void add(final T item)
-   {
-
+   public void add(final T item) {
+       if (item == null){
+           throw new IllegalArgumentException("item cannot be null");
+       }
    }// end add
    
    /**
@@ -92,7 +99,12 @@ public class LinkedList<T extends Comparable <? super T>>
     */
    public void addAll(final int index, final T [] array)
    {
-        
+        if (array == null){
+            throw new IllegalArgumentException("array cannot be null");
+        }
+        if (index < 0 || index > size){
+            throw new IndexOutOfBoundsException("index cannot be greater than size or less than 0");
+        }
    }// end addAll
    
    /**
@@ -114,6 +126,7 @@ public class LinkedList<T extends Comparable <? super T>>
     */
    public T get(final int index)
    {
+
       return null;
    }// end get
    
@@ -219,9 +232,18 @@ public class LinkedList<T extends Comparable <? super T>>
     *
     * @return String Representing the contents of the list
     */
-   public String toString()
-   {
-      return null;
+   public String toString() {
+       StringBuilder result = new StringBuilder("[");
+       Node<E> curr = head;
+       for(int i=0;i<size;i++){
+           result.append(curr.element);
+           curr=curr.next;
+           if(curr != null)
+               result.append(", ");
+           else
+               result.append("]");
+       }
+       return result.toString();
    }// end toString
    
 }// end list

@@ -52,14 +52,8 @@ public class LinkedList<T extends Comparable <? super T>>
        if (array == null) {
            throw new IllegalArgumentException("array cannot be null");
        }
-//       for (int i = 0; i < array.length; i++){
-//           Node newNode = new Node(array[i]);
-//           this.size++;
-//           if (i == 0){
-//               this.head = newNode;
-//               Node<T> current = head;
-//           }
-//       }
+       for(int i=0;i< array.length;i++)
+           add(array[i]);
    }// end EVC
    
 

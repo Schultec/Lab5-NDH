@@ -87,7 +87,13 @@ public class LinkedListMethods
       if (kb == null){
          throw new IllegalArgumentException("kb cannot be null");
       }
-      for
+      for (int i = 0; i < array.length; i++){
+         System.out.println("please enter an integer:");
+         int number = Integer.parseInt(kb.nextLine());
+         if (number >= 0) {
+            array[i] = number;
+         }
+      }
 
    }// end fillArray
    
@@ -105,7 +111,11 @@ public class LinkedListMethods
       if (kb == null){
          throw new IllegalArgumentException("scanner cannot be null");
       }
-      int integer = kb.nextInt();
+      int integer = 0;
+      do {
+         System.out.println("please enter an integer");
+         integer = Integer.parseInt(kb.nextLine());
+      }while(integer <= 0);
       return integer;
    }// end createInteger
    
@@ -124,7 +134,21 @@ public class LinkedListMethods
     */   
    public static Integer[] fillArray(final Scanner kb, final int total)
    {
-      return null;
+      if (total < 1){
+         throw new IllegalArgumentException("total cannot be less than 1");
+      }
+      if (kb == null){
+         throw new IllegalArgumentException("kb cannot be null");
+      }
+      Integer[] array = new Integer[total];
+      for (int i = 0; i < array.length; i++){
+         System.out.println("please enter an integer:");
+         int number = Integer.parseInt(kb.nextLine());
+         if (number >= 0) {
+            array[i] = number;
+         }
+      }
+      return array;
    }// end fillArray
    
 }// end class

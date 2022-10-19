@@ -49,12 +49,17 @@ public class LinkedList<T extends Comparable <? super T>>
    {
 	   this.head = null;
 	   this.size = 0;
-       if (array == null){
+       if (array == null) {
            throw new IllegalArgumentException("array cannot be null");
        }
-       for(int i=0;i< array.length;i++) {
-           add(i, array[i]);
-       }
+//       for (int i = 0; i < array.length; i++){
+//           Node newNode = new Node(array[i]);
+//           this.size++;
+//           if (i == 0){
+//               this.head = newNode;
+//               Node<T> current = head;
+//           }
+//       }
    }// end EVC
    
 
@@ -69,7 +74,10 @@ public class LinkedList<T extends Comparable <? super T>>
         if (item == null){
             throw new IllegalArgumentException("item cannot be null");
         }
-        add(0, item);
+        Node<T> newNode = new Node<>(item);
+        newNode.next = this.head;
+        this.head = newNode;
+        size++;
    }// end addFirst
    
  
@@ -83,6 +91,16 @@ public class LinkedList<T extends Comparable <? super T>>
    public void add(final T item) {
        if (item == null){
            throw new IllegalArgumentException("item cannot be null");
+       }
+       if(size == 0)
+           this.addFirst(item);
+       else{
+           Node<T> current = head;
+           for(int i = 1; i < size; i++)
+               current = current.next;
+
+           current.next = new Node<>(item);
+           size++;
        }
    }// end add
    
@@ -112,11 +130,9 @@ public class LinkedList<T extends Comparable <? super T>>
     * Removes all of the elements from this list. 
     * The list will be empty after this call returns.    
     */
-   public void clear()
-   {
-    while (size > 0){
-        removeLast();
-    }
+   public void clear() {
+       size = 0;
+       head=null;
    }// end clear
    
    /**
@@ -132,12 +148,13 @@ public class LinkedList<T extends Comparable <? super T>>
        if (index < 0 || index >= size){
            throw new IndexOutOfBoundsException("index cannot be greater than size or less than 0");
        }
-       for (int i = 0; i <= index){
+       Node<T> current = head;
+       for (int i = 0; i <= index; i++){
            if (i == index){
-               return Node(index)
+               current = current.next;
            }
        }
-      return null;
+      return current.data;
    }// end get
    
    /**
@@ -149,7 +166,15 @@ public class LinkedList<T extends Comparable <? super T>>
     */
    public T getLast()
    {
-      return null;
+       if (this.size == 0){
+           throw new NoSuchElementException("empty list");
+       }
+       Node<T> current = head;
+
+       for (int i = 0; i<this.size; i++) {
+           current = current.next;
+       }
+      return current.data;
    }// end getLast
    
    /**
@@ -161,8 +186,15 @@ public class LinkedList<T extends Comparable <? super T>>
     */
    public T remove()
    {
-      return null;
-   }// end remove
+       if(size == 0)
+           return null;
+       else{
+           Node<T> temp = head;
+           head = head.next;
+           size--;
+           return temp.data;
+       }// end remove
+   }
    
 
    
@@ -179,6 +211,31 @@ public class LinkedList<T extends Comparable <? super T>>
        if (data == null){
            throw new IllegalArgumentException("data cannot be null");
        }
+       Node<T> current = head;
+       Node<T> prev = head;
+       int remove_count = 0;
+       for (int i = 0; i<this.size; i++) {
+           if (current.data.equals(data)) {
+               for(int x = 1;x<this.size;x++){
+                   prev = prev.next;
+               }
+               Node<T> curr = prev.next;
+               prev.next = curr.next;
+               size--;
+               remove_count ++;
+           }
+           current = current.next;
+       }
+       if (remove_count > 0) {
+           //
+//           current = head;
+//           for (int i = 0; i<this.size; i++) {
+//               if (current.data.equals(data)) {
+//
+//               }
+//           }
+           return true;
+       }
       return false;
    }// end removeAllOccurrences
    
@@ -192,7 +249,17 @@ public class LinkedList<T extends Comparable <? super T>>
 	 */
 	public T removeLast()
 	{
-      return null;
+        if (this.size == 0){
+            throw new NoSuchElementException("list is empty");
+        }
+        Node<T> current = head;
+
+        for (int i = 0; i<this.size; i++) {
+            current = current.next;
+        }
+        size --;
+
+        return current.data;
 	}// end removeLast
 	
 	/**
@@ -207,7 +274,23 @@ public class LinkedList<T extends Comparable <? super T>>
 	 */
 	public T remove(int index)
 	{
-      return null;
+        if (index < 0 || index >= this.size){
+            throw new IndexOutOfBoundsException("bad index");
+        }
+        else if(index == 0)
+            return remove();
+        else if(index == size - 1)
+            return removeLast();
+        else{
+            Node<T> prev = head;
+            for(int i = 1;i<index;i++){
+                prev = prev.next;
+            }
+            Node<T> curr = prev.next;
+            prev.next = curr.next;
+            size--;
+            return curr.data;
+        }
 	}// end remove
  
    
@@ -219,7 +302,7 @@ public class LinkedList<T extends Comparable <? super T>>
     */
    public int size()
    {
-      return 0;
+      return this.size;
    }// end size
    
    
@@ -235,7 +318,13 @@ public class LinkedList<T extends Comparable <? super T>>
     */
    public Object [] toArray()
    {
-      return null;
+       Object[] array = new Object[this.size];
+       Node<T> current = head;
+       for (int i = 0; i<this.size; i++) {
+           array[i] = current.data;
+           current = current.next;
+       }
+       return array;
    }  // end toArray
    
    
@@ -249,7 +338,7 @@ public class LinkedList<T extends Comparable <? super T>>
        StringBuilder result = new StringBuilder("[");
        Node<T> curr = head;
        for(int i=0;i<size;i++){
-           result.append(curr.element);
+           result.append(curr.data);
            curr=curr.next;
            if(curr != null)
                result.append(", ");

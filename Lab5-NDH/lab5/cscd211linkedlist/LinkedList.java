@@ -52,9 +52,9 @@ public class LinkedList<T extends Comparable <? super T>>
        if (array == null){
            throw new IllegalArgumentException("array cannot be null");
        }
-       for(this.size = 0;this.size< array.length;this.size++)
-           add(this.size ,array[this.size]);
-            
+       for(int i=0;i< array.length;i++) {
+           add(i, array[i]);
+       }
    }// end EVC
    
 
@@ -69,6 +69,7 @@ public class LinkedList<T extends Comparable <? super T>>
         if (item == null){
             throw new IllegalArgumentException("item cannot be null");
         }
+        add(0, item);
    }// end addFirst
    
  
@@ -113,7 +114,9 @@ public class LinkedList<T extends Comparable <? super T>>
     */
    public void clear()
    {
-
+    while (size > 0){
+        removeLast();
+    }
    }// end clear
    
    /**
@@ -128,6 +131,11 @@ public class LinkedList<T extends Comparable <? super T>>
    {
        if (index < 0 || index >= size){
            throw new IndexOutOfBoundsException("index cannot be greater than size or less than 0");
+       }
+       for (int i = 0; i <= index){
+           if (i == index){
+               return Node(index)
+           }
        }
       return null;
    }// end get
@@ -199,9 +207,6 @@ public class LinkedList<T extends Comparable <? super T>>
 	 */
 	public T remove(int index)
 	{
-        if (index < 0 || index >= this.size){
-
-        }
       return null;
 	}// end remove
  
@@ -242,7 +247,7 @@ public class LinkedList<T extends Comparable <? super T>>
     */
    public String toString() {
        StringBuilder result = new StringBuilder("[");
-       Node<E> curr = head;
+       Node<T> curr = head;
        for(int i=0;i<size;i++){
            result.append(curr.element);
            curr=curr.next;

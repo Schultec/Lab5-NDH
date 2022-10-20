@@ -118,6 +118,25 @@ public class LinkedList<T extends Comparable <? super T>>
         if (index < 0 || index > size){
             throw new IndexOutOfBoundsException("index cannot be greater than size or less than 0");
         }
+        //make current pointer
+       Node<T> current = head;
+        //navigate to the index
+        for (int i = 0; i < index -1; i++){
+            current = current.next;
+            if (index == 0){
+
+            }
+        }
+        //create temp node
+       Node<T> temp = current.next;
+        //append on the values of the array
+        for (int x = 0; x < array.length; x++){
+            this.size++;
+            current.next = new Node<>(array[x]);
+            current = current.next;
+        }
+        //attach the rest of the list
+       current.next = temp;
    }// end addAll
    
    /**
@@ -137,18 +156,19 @@ public class LinkedList<T extends Comparable <? super T>>
     *
     * @throws IndexOutOfBoundsException if index is less than 0 or greater than or equal to size
     */
-   public T get(final int index)
-   {
+   public T get(final int index) {
        if (index < 0 || index >= size){
            throw new IndexOutOfBoundsException("index cannot be greater than size or less than 0");
        }
        Node<T> current = head;
+       Node<T> fin = current;
        for (int i = 0; i <= index; i++){
            if (i == index){
-               current = current.next;
+               fin = current;
            }
+           current = current.next;
        }
-      return current.data;
+       return fin.data;
    }// end get
    
    /**
@@ -158,14 +178,13 @@ public class LinkedList<T extends Comparable <? super T>>
     *
     * @throws NoSuchElementException if the list is empty
     */
-   public T getLast()
-   {
+   public T getLast() {
        if (this.size == 0){
            throw new NoSuchElementException("empty list");
        }
        Node<T> current = head;
 
-       for (int i = 0; i<this.size; i++) {
+       for (int i = 0; i<this.size-1; i++) {
            current = current.next;
        }
       return current.data;
@@ -178,8 +197,7 @@ public class LinkedList<T extends Comparable <? super T>>
     *
     * @throws NoSuchElementException if the list is empty
     */
-   public T remove()
-   {
+   public T remove() {
        if(size == 0)
            return null;
        else{
@@ -200,37 +218,32 @@ public class LinkedList<T extends Comparable <? super T>>
     *
     * @throws IllegalArgumentException if data is null
     */
-   public boolean removeAllOccurrences(final T data)
-   {
+   public boolean removeAllOccurrences(final T data) {
        if (data == null){
            throw new IllegalArgumentException("data cannot be null");
        }
+
        Node<T> current = head;
-       Node<T> prev = head;
-       int remove_count = 0;
-       for (int i = 0; i<this.size; i++) {
-           if (current.data.equals(data)) {
-               for(int x = 1;x<this.size;x++){
-                   prev = prev.next;
+       //Node<T> temp = current;
+       int orig_size = this.size;
+       if (head == null){
+           return false;
+       }else{
+           for (int i = 0; i < orig_size; i++){
+               if (current.data.equals(data)) {
+                   if (current == head) {
+                       head = head.next;
+                       current = head;
+                       this.size --;
+                   }else {
+                       remove(i);
+                   }
+               }else{
+                   current = current.next;
                }
-               Node<T> curr = prev.next;
-               prev.next = curr.next;
-               size--;
-               remove_count ++;
            }
-           current = current.next;
-       }
-       if (remove_count > 0) {
-           //
-//           current = head;
-//           for (int i = 0; i<this.size; i++) {
-//               if (current.data.equals(data)) {
-//
-//               }
-//           }
            return true;
        }
-      return false;
    }// end removeAllOccurrences
    
    
@@ -241,19 +254,21 @@ public class LinkedList<T extends Comparable <? super T>>
 	 *
 	 * @throws NoSuchElementException if this list is empty
 	 */
-	public T removeLast()
-	{
+	public T removeLast() {
         if (this.size == 0){
             throw new NoSuchElementException("list is empty");
         }
         Node<T> current = head;
+        Node<T> temp = head;
 
-        for (int i = 0; i<this.size; i++) {
+        for (int i = 0; i<this.size-2; i++) {
             current = current.next;
         }
+        temp = current.next;
+        current.next = null;
         size --;
 
-        return current.data;
+        return temp.data;
 	}// end removeLast
 	
 	/**
@@ -266,8 +281,7 @@ public class LinkedList<T extends Comparable <? super T>>
 	 *
 	 * @throws IndexOutOfBoundsException if index is less than 0 or greater than or equal to size
 	 */
-	public T remove(int index)
-	{
+	public T remove(int index) {
         if (index < 0 || index >= this.size){
             throw new IndexOutOfBoundsException("bad index");
         }
@@ -294,8 +308,7 @@ public class LinkedList<T extends Comparable <? super T>>
     *
     * @return int The size
     */
-   public int size()
-   {
+   public int size() {
       return this.size;
    }// end size
    
@@ -310,8 +323,7 @@ public class LinkedList<T extends Comparable <? super T>>
     *
     * @return Object [] an array containing all of the elements in this list in proper sequence 
     */
-   public Object [] toArray()
-   {
+   public Object [] toArray() {
        Object[] array = new Object[this.size];
        Node<T> current = head;
        for (int i = 0; i<this.size; i++) {
@@ -331,6 +343,7 @@ public class LinkedList<T extends Comparable <? super T>>
    public String toString() {
        StringBuilder result = new StringBuilder("[");
        Node<T> curr = head;
+       String fin;
        for(int i=0;i<size;i++){
            result.append(curr.data);
            curr=curr.next;
@@ -339,7 +352,11 @@ public class LinkedList<T extends Comparable <? super T>>
            else
                result.append("]");
        }
-       return result.toString();
+       fin = result.toString();
+       if (size == 0){
+           fin = "list is empty";
+       }
+       return fin;
    }// end toString
    
 }// end list

@@ -8,14 +8,12 @@ import lab5.cscd211methods.LinkedListMethods;
  * The class that contains main and is used for testing our LinkedList code
  * NOTE: All parameters will be final and all preconditions will be enforced
  */
-public class CSCD211Lab5
-{
+public class CSCD211Lab5 {
 	/**
 	 * The main method to test your code
 	 * @param args Command line parameters 
 	 */
-   public static void main(String [] args)
-   {
+   public static void main(String [] args) {
       Integer value = null, item = null;
       boolean res =  false;
       Integer [] array = new Integer[5];
@@ -26,12 +24,10 @@ public class CSCD211Lab5
       
       LinkedList <Integer>myList = new LinkedList<Integer>(array); // no dummy head node
       
-      do
-      {
+      do {
          choice = LinkedListMethods.menu(kb);
          
-         switch(choice)
-         {
+         switch(choice) {
             case 1:  System.out.println(myList);
                      break;
                      

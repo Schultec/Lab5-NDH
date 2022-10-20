@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="732c77c8-1261-437e-aaf1-b2390633f15c" name="Changes" comment="continued updates">
+    <list default="true" id="732c77c8-1261-437e-aaf1-b2390633f15c" name="Changes" comment="added create integer method.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab5-NDH/lab5/cscd211lab5/CSCD211Lab5.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab5-NDH/lab5/cscd211lab5/CSCD211Lab5.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lab5-NDH/lab5/cscd211linkedlist/LinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab5-NDH/lab5/cscd211linkedlist/LinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab5-NDH/lab5/cscd211methods/LinkedListMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab5-NDH/lab5/cscd211methods/LinkedListMethods.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,5 +91,15 @@
     <MESSAGE value="docs files" />
     <MESSAGE value="continued updates" />
     <option name="LAST_COMMIT_MESSAGE" value="continued updates" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -6,8 +6,7 @@ import java.util.Scanner;
  * Some basic methods we will need to use in conjunction with the LinkedList class
  * NOTE all parameters will be final and all preconditions will be enforced
  */
-public class LinkedListMethods
-{
+public class LinkedListMethods {
    /**
     * menu method for testing your linked list
     * <br>  1) Print the List
@@ -132,8 +131,7 @@ public class LinkedListMethods
     * @throws IllegalArgumentException if total less than 1 or kb is null
     * @NOTE The input buffer will be left empty
     */   
-   public static Integer[] fillArray(final Scanner kb, final int total)
-   {
+   public static Integer[] fillArray(final Scanner kb, final int total) {
       if (total < 1){
          throw new IllegalArgumentException("total cannot be less than 1");
       }
